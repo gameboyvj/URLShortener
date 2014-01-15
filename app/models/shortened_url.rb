@@ -1,8 +1,8 @@
 class ShortenedUrl < ActiveRecord::Base
 
-  validates :short_url
-  validates :long_url
-  validates :submitter_id
+  validate :short_url
+  validate :long_url
+  validate :submitter_id
 
   belongs_to(
   :user,
@@ -13,10 +13,16 @@ class ShortenedUrl < ActiveRecord::Base
 
   def self.random_code
     random = SecureRandom::urlsafe_base64
-
   end
 
-  def initialize
+  def self.create_for_user_and_long_url!(user, url)
+    u = ShortenedUrl.new
+    short = ShortenedUrl.random_code
+    u.short_url = short
+    u.long_url = url
+    u.submitter_id = user.id
 
+    save!
   end
+
 end

@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(:version => 20140115162442) do
   add_index "shortened_urls", ["submitter_id"], :name => "index_shortened_urls_on_submitter_id"
 
   create_table "users", :force => true do |t|
-    t.string   "name"
     t.string   "email"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

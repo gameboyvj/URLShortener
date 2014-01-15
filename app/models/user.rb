@@ -1,5 +1,6 @@
 
 class User < ActiveRecord::Base
+  attr_accessible :id, :email
   validates :email, :uniqueness => true
 
   has_many(
@@ -9,9 +10,9 @@ class User < ActiveRecord::Base
     :primary_key => :id
   )
 
-  def self.create_for_user_and_long_url!(user, url)
-    # Shortened_url()
-  end
 
 
+  # def initialize(email)
+#     @email = email
+#   end
 end
