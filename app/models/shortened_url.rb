@@ -22,7 +22,7 @@ class ShortenedUrl < ActiveRecord::Base
     u.long_url = url
     u.submitter_id = user.id
 
-    save!
+    u.save!
   end
 
 end
