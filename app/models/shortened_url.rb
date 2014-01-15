@@ -32,4 +32,15 @@ class ShortenedUrl < ActiveRecord::Base
     u.save!
   end
 
+  def num_clicks
+    Visit.where(:shortened_url_id = self.id).count
+  end
+
+  def num_uniques
+    Visit.where(:shortened_url_id = self.id).distince.count
+  end
+
+  def num_recent_uniques
+    Visit.visitors.where(:date_created > 10.minutes.ago)
+  end
 end
