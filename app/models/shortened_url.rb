@@ -5,7 +5,7 @@ class ShortenedUrl < ActiveRecord::Base
   validate :submitter_id
 
   belongs_to(
-  :user,
+  :submitter,
   :class_name => "User",
   :foreign_key => :submitter_id,
   :primary_key => :id

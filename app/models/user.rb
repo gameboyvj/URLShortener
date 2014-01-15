@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => true
 
   has_many(
-    :shortened_urls,
+    :submitted_urls,
     :class_name => "shortened_url",
     :foreign_key => :submitter_id,
     :primary_key => :id
